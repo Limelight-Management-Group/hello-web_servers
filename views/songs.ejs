@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<header>
+	<h1>
+		<p>
+			Songs
+		</p>
+	</h1>
+</header>
+<hr>
+	<% for(song of songs) { %>
+<div class="container row">
+	<div class="col-md-">
+		
+	</div>
+        <%= song.artistName %>
+        <br>
+        <%= song.album_id %>
+        <br>
+        <%= song.title %>
+        <br>
+        
+        <%= song.track_no %>
+        <br>
+         <br>
+        <%= song.length %>
+        <br><br>
+        <form action="/edit/<%= song.id %>" method="get">
+                        <button class="btn" type="submit">Edit</button>
+                    </form>
+                    <br>
+                    <form action="/delete/<%= song.id %>" method="post">
+                        <button class="btn" type="submit">DELETE</button>
+                    </form>
+                   <hr> 
+                    
+    <% } %>
+</div>
+
+</body>
+</html>
