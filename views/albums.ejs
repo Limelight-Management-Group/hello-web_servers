@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="nav-bar-margin">
+<% include ./nav/logged_in_nav %>
+<% include ./nav/head %>
+</div>
+<br>
+<div class="container-fluid">
+<h1><p>Albums</p></h1>
+</div>
+<br>
+
+
+	<% for(album of albums) { %>
+	
+        <hr>
+	<div class="container row music-margin">
+        
+	<!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xl-4">
+	</div> -->
+	    <div class="col-lg-8 col-md-4 col-sm-8 col-xl-8">
+	        	<b>Album Title:</b> <a href="albums/<%- album.artist_id%>"><%= album.title %></a>
+	    </div>
+		<div class="col-md-4 col-xl-4 col-sm-4 col-lg-4">
+		 		<img class="img-50" src="./images/rebecca_thomas.jpg">
+		</div>
+		        
+	</div>
+		<div class="row">
+        	<div class=" col-md-6 col-lg-6 col-sm-6 col-xs-6 col-xl-6">
+		        <b>Artist:</b> <a href="/artists/<%- album.artist_id%>"><%= album.artistName %></a>
+        	</div>
+
+        	<div class=" col-md-6 col-lg-6 col-sm-6 col-xs-6 col-xl-6">
+   			    <a href="/songs/"><%= album.count %></a> <b>Songs</b>
+       		</div>
+        
+       </div>
+        <br><br>
+        <form action="/edit/<%= album.id %>" method="get">
+                        <button class="btn" type="submit">Edit</button>
+                    </form>
+                    <br>
+                    <form action="/delete/<%= album.id %>" method="post">
+                        <button class="btn" type="submit">DELETE</button>
+                    </form>
+                   <hr> 
+                    
+</div>
+    <% } %>
+
+</body>
+</html>

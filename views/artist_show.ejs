@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="nav-bar-margin">
+	<% include ./nav/logged_in_nav %>
+	<% include ./nav/head %>
+</div>
+<%= artistShow.genre %>
+<%= artistShow.name %>
+<% for(album of artistShow.albums) { %>
+<div class="container row">
+	<div class="col-md-12">
+		
+	</div>
+        <%= album.title %>
+        <br>
+        <%= album.id %>
+        <br>
+        <%= album.year %>
+        <br>
+        <!-- <%= artistShow.count %> -->
+        <!-- <%= album.track_no %>
+        <br>
+         <br>
+        <%= album.length %> -->
+        <br><br>
+        <form action="/edit/<%= album.id %>" method="get">
+                        <button class="btn" type="submit">Edit</button>
+                    </form>
+                    <br>
+                    <form action="/delete/<%= album.id %>" method="post">
+                        <button class="btn" type="submit">DELETE</button>
+                    </form>
+                   <hr> 
+                    
+    <% } %>
+</div>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 const express = require('express');
-let ejs = require('ejs')
+let ejs = require('ejs');
 let bodyParser = require('body-parser');
-let path = require('path')
+let path = require('path');
 
 
 let app = express();

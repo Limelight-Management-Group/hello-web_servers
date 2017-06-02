@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="nav-bar-margin">
+<% include ./nav/logged_in_nav %>
+<% include ./nav/head %>
+</div>
+<!-- <br>
+<div class="container">
+<h1><p>Artists</p></h1>
+</div>
+<br>
+<div class="container row music-margin">
+<hr>
+	<div class="col-md-4">
+		<img class="img-50" src="./images/rebecca_thomas.jpg">
+	</div>
+	<div class="col-md-8">
+		<p>Artist Name</p>
+		<br>
+		<div class="row">
+			<div class="col-md-6">
+				<h4>Albums: <a href="#">4</a></h4>
+			</div>
+			<div class="col-md-6">
+				<h4>Genre: <a href="#">Soul</a></h4>
+			</div>
+		</div>
+	</div>
+</div>
+	<hr>
+<div class="container row music-margin">
+	<div class="col-md-4 col-lg-4 col-xl-4">
+		<img class="img-50" src="./images/rebecca_thomas.jpg">
+	</div>
+	<div class="col-md-8 col-lg-8 col-xl-8">
+		<p>Artist Name</p>
+		<br>
+		<div class="row">
+			<div class="col-md-6 col-lg-6 col-xl-6">
+				<h4>Albums: <a href="#">4</a></h4>
+			</div>
+			<div class="col-md-6 col-lg-6 col-xl-6">
+				<h4>Genre: <a href="#">Soul</a></h4>
+			</div>
+		</div>
+	</div>
+	<br>
+</div>
+	<hr>
+<div class="container row music-margin">
+	<div class="col-md-4">
+		<img class="img-50" src="./images/rebecca_thomas.jpg">
+	</div>
+	<div class="col-md-8">
+		<p>Artist Name</p>
+		<br>
+		<div class="row">
+			<div class="col-md-6">
+				<h4>Albums: <a href="#">4</a></h4>
+			</div>
+			<div class="col-md-6">
+				<h4>Genre: <a href="#">Soul</a></h4>
+			</div>
+		</div>
+	</div>
+</div> -->
+	<hr>
+	<div class='container'>
+<header>
+	<h1><p>Artists</p></h1>
+</header>
+	<% for(artist of artists) { %>
+		<div class="row container">
+		<div class="col-md-4">
+			<img class="img-50" src="/images/rebecca_thomas.jpg">
+		</div>
+
+        <hr>
+        <a href="/artists/<%- album.artist_id%>"><%= artist.name %></a>
+        <br>
+        <div class="col-md-4">
+        <%= artist.album_id %>
+        <b>Albums:</b> <a href="/albums/<%- album.artist_id%>"><%= artist.count %></a>
+        </div>
+        <div class="col-md-4">
+        <b>Genre: </b><%= artist.genre %>
+        </div>
+        </div>
+        <br>
+         <br>
+        <br><br>
+        <form action="/edit/<%= artist.id %>" method="get">
+                        <button class="btn" type="submit">Edit</button>
+                    </form>
+                    <br>
+                    <form action="/delete/<%= artist.id %>" method="post">
+                        <button class="btn" type="submit">DELETE</button>
+                    </form>
+                   <hr> 
+                    
+    <% } %>
+</div>
+
+</body>
+</html>
