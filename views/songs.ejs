@@ -4,39 +4,60 @@
 	<title></title>
 </head>
 <body>
+<div id="nav-bar-margin">
+	<% include ./nav/logged_in_nav %>
+	<% include ./nav/head %>
+</div>
+<br>
 <header>
 	<h1>
-		<p>
+		<p class="container-fluid" id="song-size">
 			Songs
 		</p>
 	</h1>
 </header>
+<div class="row">
+	<div class="col-md-3 col-xs-3 col-sm-3">
+		<b>Song</b>
+	</div>
+	<div class="col-md-3 col-xs-3 col-sm-3">
+		<b>Artist</b>
+	</div>
+	<div class="col-md-3 col-xs-3 col-sm-3">
+		<b>Album</b>
+	</div>
+	<div class="col-md-3 col-xs-3 col-sm-3">
+		<b>Length</b>
+	</div>
+</div>
 <hr>
 	<% for(song of songs) { %>
-<div class="container row">
-	<div class="col-md-">
-		
+<div class="container-fluid row">
+	<div class="col-md-3 col-xs-3 col-sm-3">
+		<%= song.title %>
 	</div>
-        <%= song.artistName %>
-        <br>
-        <%= song.album_id %>
-        <br>
-        <%= song.title %>
-        <br>
-        
-        <%= song.track_no %>
-        <br>
-         <br>
+	<div class="col-md-3 col-xs-3 col-sm-3">
+        <%= song.artistName %>		
+	</div>
+	<div class="col-md-3 col-xs-3 col-sm-3">
+        <%= song.album.title %>	
+	</div>
+	<div class="col-md-3 col-xs-3 col-sm-3">
+		<br>
         <%= song.length %>
-        <br><br>
+        <br>
+	</div>
+       
+         <br>
+
         <form action="/edit/<%= song.id %>" method="get">
                         <button class="btn" type="submit">Edit</button>
-                    </form>
-                    <br>
-                    <form action="/delete/<%= song.id %>" method="post">
-                        <button class="btn" type="submit">DELETE</button>
-                    </form>
-                   <hr> 
+       	</form>
+            <br>
+        <form action="/delete/<%= song.id %>" method="post">
+            <button class="btn" type="submit">DELETE</button>
+        </form>
+            <hr> 
                     
     <% } %>
 </div>

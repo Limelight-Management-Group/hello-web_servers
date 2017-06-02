@@ -16,11 +16,12 @@ app.get('/', (req, res) =>{
 app.get('/songs', (req, res) =>{
 	// console.log('this is the songs', songs);
 	songs.forEach(song => {
-	song.artistId = albums.filter(album => album.id === song.album_id)[0].id
-		// console.log(song.artistId)
+	song.album = albums.filter(album => album.id === song.album_id)[0]
+
 		artists.forEach(artist => {
-			if(artist.id === song.artistId) {
+			if(artist.id === song.album.id) {
 				song.artistName = artist.name
+
 			}
 		})	
 	})
@@ -37,7 +38,8 @@ app.get('/albums', (req, res) =>{
 				album.count++
 				album.artist_id
 			}	
-		}) 
+		})
+		console.log('this is the album id: ', album.artist_id) 
 	}) 
 	res.render('albums', {albums} )
 })
@@ -61,7 +63,7 @@ app.get('/artists/:id', (req, res) => {
 	// console.log('these are the params: ', req.params)
 	const id = parseInt(req.params.id);
 	const artistShow = artists.filter(artist => id === artist.id)[0]
-	console.log('these are the artists: ', artistShow)
+	// console.log('these are the artists: ', artistShow)
 
 	// artistShow.forEach(artist => {
 		// artist.count = 0;
@@ -72,31 +74,34 @@ app.get('/artists/:id', (req, res) => {
 		album.count = songs.filter(song => album.id === song.album_id).length
 
 		})
+	
 		// console.log(artistShow)	
 		res.render('artist_show', {artistShow})	
 })
 app.get('/albums/:album_id', (req, res) => {
 	// console.log('these are the params: ', req.params)
 	const albumId = parseInt(req.params.album_id);
-	const albumShow = albums.filter(album => albumId === album.id)
+	const albumShow = albums.filter(album => albumId === album.id)[0]
 	// console.log('these are the albums: ', albumShow)
 
-	albumShow.forEach(album => {
-		// album.count = 0;
-		artistName = albumShow.filter(album => albumId === album.album_id)
+	
+		// const artistName = albumShow.filter(album => albumId === album.album_id)
 		// console.log("albums show: ", albumShow.artistId)
-		console.log(artistName)
-		artistName.forEach(album => {
+		// console.log(artistName)
+		// artistName.forEach(album => {
 
-		artistName.artist = artists.filter(artist => albumId === artist.id)[0]
-		})
+		let artistName = artists.filter(artist => albumShow.artist_id === artist.id)[0].name
+		let albumSongs = songs.filter(song => albumId === song.album_id)
+		// let trackNumber = albumSongs.forEach( track)
+		let count = albumSongs.length
+		// })
 		// albums.forEach(album => {
 		// 	if(album.id === song.albumId) {
 		// 		song.albumName = album.name
 		// 	}
-		})
-		// console.log(albumShow)	
-		res.render('albumShow', {albumShow})
+	
+		// console.log(artistName)	
+		res.render('albumShow', {albumShow, artistName, albumSongs, count})
 	
 })
 

@@ -74,17 +74,24 @@
 	<h1><p>Artists</p></h1>
 </header>
 	<% for(artist of artists) { %>
+		<div class="row container">
+		<div class="col-md-4">
+			<img class="img-50" src="/images/rebecca_thomas.jpg">
+		</div>
 
         <hr>
+        <a href="/artists/<%- album.artist_id%>"><%= artist.name %></a>
+        <br>
+        <div class="col-md-4">
         <%= artist.album_id %>
-        <br>
-        <%= artist.name %>
-        <br>
-        
-        <%= artist.genre %>
+        <b>Albums:</b> <a href="/albums/<%- album.artist_id%>"><%= artist.count %></a>
+        </div>
+        <div class="col-md-4">
+        <b>Genre: </b><%= artist.genre %>
+        </div>
+        </div>
         <br>
          <br>
-        <b>Number of Albums:</b> <a href="/Albums"><%= artist.count %></a>
         <br><br>
         <form action="/edit/<%= artist.id %>" method="get">
                         <button class="btn" type="submit">Edit</button>

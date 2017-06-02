@@ -4,7 +4,10 @@
 	<title></title>
 </head>
 <body>
-<h1><p>This is the artist show page.</p></h1>
+<div id="nav-bar-margin">
+	<% include ./nav/logged_in_nav %>
+	<% include ./nav/head %>
+</div>
 <%= artistShow.genre %>
 <%= artistShow.name %>
 <% for(album of artistShow.albums) { %>
@@ -18,7 +21,7 @@
         <br>
         <%= album.year %>
         <br>
-        <%= album.count %>
+        <!-- <%= artistShow.count %> -->
         <!-- <%= album.track_no %>
         <br>
          <br>

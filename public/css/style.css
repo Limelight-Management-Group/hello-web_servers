@@ -1,6 +1,6 @@
 #nav-bar-margin{
 	padding-bottom: 20px;
-	margin-bottom: 
+	margin-bottom: 50px;
 }
 
 #body-div{
@@ -9,7 +9,17 @@
 .img-50{
 	width: 50px;
 	height: auto;
+	padding-right: 20px;
 }
 .music-margin{
 	margin-left: 50px;
+}
+body{
+	margin-left: 40px;
+	margin-right: 40px;
+}
+#song-size{
+	font-size: 70px;
+	margin-left: -20px;
+	padding-bottom: 30px;
 }

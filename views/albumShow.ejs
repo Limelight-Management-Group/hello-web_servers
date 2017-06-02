@@ -1,25 +1,82 @@
-<h1>This is the albumShow.ejs</h1>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
 
+	<div id="nav-bar-margin">
+    <% include ./nav/logged_in_nav %>
+    <% include ./nav/head %>
+  </div>
 
-<% for(album of albumShow) { %>
 <div class="container row">
-	<!-- <div class="col-md-12">
-		
-	</div> -->
-        <%= album.title %>
-        <br>
-        <!-- <%= album.id %> -->
-        <br>
-        <%= album.year %>
-        <br>
-        <!-- <%= album.count %> -->
-        <!-- <%= album.track_no %>
-        <br>
-         <br>
-        <%= album.length %> -->
-        <br><br>
+  	<!-- <div class="col-md-12">
+  		<br>
+  	</div> -->
+  	<br>
+  	
+  	<div class="col-md-8 col-sm-8 col-xs-8 col-lg-8">
+          <%= albumShow.title %>
+    </div>
+          
+  	<div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+          <img class="img-50" src="/images/rebecca_thomas.jpg">
+      
+    </div>
         
+</div>
+
+    <div class="row">
+        <div class="col-md-4 col-lg-4 col-sm-4">
+          <a href="/artists"><%= artistName %></a>
+        </div>
+        <div class="col-md-4 col-lg-4 col-sm-4">
+            <%= albumShow.year %>
+        </div>
+        <div class="col-md-4 col-lg-4 col-sm-4">
+        
+        <%= albumShow.count %> 
+        <br>
+        </div>
+    </div>
+    <br>
+        <div class="row container">
+          
+            <div class="col-md-4">  
+              <b>Songs</b><br><br>
+            </div>
+
+            <div class="col-md-4">
+              <b>Length</b>
+            </div>
+
+            <div class="col-md-4">
+              <b>Track</b>
+            </div>
+
+        </div>
+
+        <div class="row">
+       
+          <% for( let i =0; i < albumSongs.length; i++) { %>
+          <div class="col-md-4 col-sm-4 col-lg-4">
+            <%= albumSongs[i].title %>  
+          </div>
+          <div class="col-md-4 col-sm-4 col-lg-4">
+            <%= albumSongs[i].length %>
+          </div>
+          <div class="col-md-4 col-sm-4 col-lg-4">
+            <%= i + 1%>
+          </div>
+        </div>
+        
+        
+
+        <% } %>
                    <hr> 
                     
-</div>
-    <% } %>
+
+
+</body>
+</html>
